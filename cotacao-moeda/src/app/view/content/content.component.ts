@@ -14,14 +14,12 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.findAll();
-    console.log("INIT "+ this.ListCotacoes);
   }
 
   findAll():void{
     this.serviceCotacoes.findAllService().subscribe(
-      (resposta)=>{
-        this.ListCotacoes = resposta
-        console.log("LISTA "+this.ListCotacoes);
+      (resposta)=> {
+        this.ListCotacoes = resposta.value
       },
       (error)=>{
         alert(error)
