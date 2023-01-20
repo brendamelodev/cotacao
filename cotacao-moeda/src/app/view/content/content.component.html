@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="container text-center w-100 p-3 mt-2" style="background-color: rgb(246, 246, 246);">
+  <div class="container text-center w-100 p-3 mt-2 tableOverflow" style="background-color: rgb(246, 246, 246);">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -52,17 +52,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td *ngFor="let list of ListCotacoes">{{list.cotacaoCompra}}</td>
+        <tr *ngFor="let list of ListCotacoes">
+          <td>{{list.cotacaoCompra}}</td>
+          <td>{{list.cotacaoVenda}}</td>
+          <td>{{list.dataHoraCotacao}}</td>
         </tr>
-        <!-- <tr>
-          <td>5.505</td>
-          <td>5.364</td>
-          <td>2023-01-19</td>
-        </tr> -->
       </tbody>
     </table>
   </div>
-
 </div>
 

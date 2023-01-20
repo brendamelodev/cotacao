@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CotacoesService {
-  url: string = environment.urlApi;
+  urlInicio: string = environment.inicioUrl;
+  urlFinal: string = environment.finalUrl;
 
   constructor(private http: HttpClient) {}
 
-  findAllService():Observable<Cotacoes[]>{
-    const addUrl = this.url + "(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@moeda='EUR'&@dataInicial='07-06-2022'&@dataFinalCotacao='07-25-2022'&$top=1000&$format=json&$select=cotacaoCompra,cotacaoVenda,dataHoraCotacao"
-    return this.http.get<Cotacoes[]>(addUrl)
+  findAllService():Observable<Cotacoes>{
+    const addUrl = this.urlInicio + "@moeda='EUR'&@dataInicial='07-06-2022'&@dataFinalCotacao='07-25-2022'" + this.urlFinal
+    return this.http.get<Cotacoes>(addUrl)
   };
-
 }
