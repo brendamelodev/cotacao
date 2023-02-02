@@ -8,5 +8,5 @@ Aplicação para consultar histórico de cotações de moeda.
 ## Deploy:
 
 <div>
-<a href="https://brendamelodev.github.io/cotacao/" target="_blank">
+  <a href="https://brendamelodev.github.io/cotacao/" target="_blank">brendamelodev.github.io/cotacao/</a>
 </div>
