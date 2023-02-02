@@ -1,45 +1,45 @@
 <div class="my-2">
-  <div class="container text-center w-100 p-3" style="background-color: #eee;">
-    <div class="row">
-      <div class="col">
-        <p class="text-start mb-0">Moeda</p>
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Selecione</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      <div class="col">
-        <p class="text-start mb-0">Data Inicial</p>
-        <div class="input-group mb-3">
-          <input type="date" name="dataInicial" id="dataInicial" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+  <div class="container form-group text-center w-100 p-3" style="background-color: #eee;">
+    <form [formGroup]="formFilter">
+      <div class="row">
+        <div class="col form-group">
+          <p class="text-start mb-0">Moeda</p>
+          <select class="form-select" aria-label="Default select example" formControlName="moeda" #moeda>
+            <option value="" disabled selected hidden>Selecione...</option>
+            <option *ngFor="let moeda of listMoeda" [value]="moeda.ID">{{ moeda.ID }}</option>
+          </select>
+        </div>
+        <div class="col">
+          <p class="text-start mb-0">Data Inicial</p>
+          <div class="input-group mb-3 form-group">
+            <input type="date" name="dataInicial" id="dataInicial" class="form-control" aria-label="Username" aria-describedby="basic-addon1" formControlName="dataInicial" #dataInicial>
+          </div>
+        </div>
+        <div class="col">
+          <p class="text-start mb-0">Data Final</p>
+          <div class="input-group mb-3 form-group">
+            <input type="date" name="dataFinal" id="dataFinal" class="form-control" aria-label="Username" aria-describedby="basic-addon1" formControlName="dataFinal" #dataFinal>
+          </div>
+        </div>
+        <div class="col d-flex align-items-center">
+          <button type="button" class="btn btn-success w-100" [disabled]="formFilter.invalid" (click)="consultData(moeda, dataInicial, dataFinal)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+            Consultar dados
+          </button>
+        </div>
+        <div class="col d-flex align-items-center">
+          <button type="button" class="btn btn-primary w-100" (click)="updateData()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+              <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+            </svg>
+            Atualizar dados
+          </button>
         </div>
       </div>
-      <div class="col">
-        <p class="text-start mb-0">Data Final</p>
-        <div class="input-group mb-3">
-          <input type="date" name="dataFinal" id="dataFinal" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-      </div>
-      <div class="col d-flex align-items-center">
-        <button type="button" class="btn btn-success w-100">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
-            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-          </svg>
-          Consultar dados
-        </button>
-      </div>
-      <div class="col d-flex align-items-center">
-        <button type="button" class="btn btn-primary w-100">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
-            <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
-          </svg>
-          Atualizar dados
-        </button>
-      </div>
-    </div>
+    </form>
   </div>
 
   <div class="container text-center w-100 p-3 mt-2 tableOverflow" style="background-color: rgb(246, 246, 246);">
@@ -52,7 +52,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let list of ListCotacoes">
+        <tr *ngFor="let list of listCotacoes">
           <td>{{list.cotacaoCompra}}</td>
           <td>{{list.cotacaoVenda}}</td>
           <td>{{list.dataHoraCotacao}}</td>

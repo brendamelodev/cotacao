@@ -13,8 +13,13 @@ export class CotacoesService {
 
   constructor(private http: HttpClient) {}
 
-  findAllService():Observable<Cotacoes>{
-    const addUrl = this.urlInicio + "@moeda='EUR'&@dataInicial='07-06-2022'&@dataFinalCotacao='07-25-2022'" + this.urlFinal
+  findAllService(dataInicial: any, dataFinal: any):Observable<Cotacoes>{
+    const addUrl = this.urlInicio + "@moeda='EUR'"+"&@dataInicial='"+dataInicial+"'&@dataFinalCotacao='"+dataFinal+"'" + this.urlFinal
     return this.http.get<Cotacoes>(addUrl)
   };
+
+  QuotationCurrencyPeriod(moeda: any, dataInicial: any, dataFinal: any):Observable<Cotacoes>{
+    const url = this.urlInicio + "@moeda='"+moeda+"'&@dataInicial='"+dataInicial+"'&@dataFinalCotacao='"+dataFinal+"'" + this.urlFinal
+    return this.http.get<Cotacoes>(url)
+  }
 }
