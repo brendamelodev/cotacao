@@ -1,7 +1,7 @@
 # Histórico de Cotação
 Aplicação para consultar histórico de cotações de moeda.
 <div>
-  <a href="https://brendamelodev.github.io/cotacao/" target="_blank">brendamelodev.github.io/cotacao/</a>
+  <a href="https://brendamelodev.github.io/cotacao-moeda/" target="_blank">Deploy</a>
 </div>
 
 ## Ferramentas e Tecnologias
