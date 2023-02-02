@@ -6,7 +6,7 @@
           <p class="text-start mb-0">Moeda</p>
           <select class="form-select" aria-label="Default select example" formControlName="moeda" #moeda>
             <option value="" disabled selected hidden>Selecione...</option>
-            <option *ngFor="let moeda of listMoeda" [value]="moeda.ID">{{ moeda.ID }}</option>
+            <option *ngFor="let moeda of listMoeda" [value]="moeda.ID">{{ moeda.ID }} - {{ moeda.TEXT }}</option>
           </select>
         </div>
         <div class="col">
