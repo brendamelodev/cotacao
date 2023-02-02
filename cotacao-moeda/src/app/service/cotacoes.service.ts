@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CotacoesService {
-  urlInicio: string = environment.inicioUrl;
-  urlFinal: string = environment.finalUrl;
+  urlInicio: any = environment.inicioUrl;
+  urlFinal: any = environment.finalUrl;
 
   constructor(private http: HttpClient) {}
 
