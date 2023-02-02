@@ -52,11 +52,15 @@ export class ContentComponent implements OnInit {
   }
 
   consultData(moeda: any, dataInicial: any, dataFinal: any) {
-    this.serviceCotacoes.QuotationCurrencyPeriod(moeda.value, moment(dataInicial.value).format('DD/MM/YYYY'), moment(dataFinal.value).format('DD/MM/YYYY')).subscribe(
+    this.serviceCotacoes.QuotationCurrencyPeriod(moeda, moment(dataInicial).format('DD/MM/YYYY'), moment(dataFinal).format('DD/MM/YYYY')).subscribe(
       (resposta) => { this.listCotacoes = resposta.value },
       (error) => { alert(error) }
     )
   }
 
   updateData() { location.reload() }
+
+  returnIfDateIsIncompatible(dataInicial: any, dataFinal: any) {
+    return moment(dataFinal).format('DD/MM/YYYY') < moment(dataInicial).format('DD/MM/YYYY');
+  }
 }
